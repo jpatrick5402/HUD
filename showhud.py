@@ -150,17 +150,18 @@ def checkKeyword(Key):
         if "latitude" in words or "longitude" in words:
             print(getLatLon(getLocation()))
 
-def mainLoop():
+def mainLoop(Name):
     while True:
         words = STT(show=True)
-        if words[0:6].lower() == "butler":
+        if words[0:len(Name)].lower() == Name:
             checkKeyword(words)
 
 def main():
+    deviceName = input("Name Your Device: ")
     print("Good Morning Sir")
     print("It is currently: " + str(datetime.now()))
 
-    mainLoop()
+    mainLoop(deviceName)
     
     Save() #last line of main()
 
